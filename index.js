@@ -91,8 +91,8 @@ app.get('/api/rust', async (req, res) => {
     res.json(datos);
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor de ejecución real corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Servidor de ejecución real corriendo en http://0.0.0.0:${PORT}`);
 });
 // Diccionario de consignas y salidas esperadas por lección
 const DESAFIOS = {

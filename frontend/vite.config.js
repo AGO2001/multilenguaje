@@ -10,5 +10,16 @@ export default defineConfig({
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom')
     }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 })

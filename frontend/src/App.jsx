@@ -58,10 +58,10 @@ function App() {
     setCargando(true)
     try {
       const [resPy, resJs, resJava, resRs] = await Promise.all([
-        fetch(`http://localhost:5000/api/python?leccion=${leccion}`).catch(() => null),
-        fetch(`http://localhost:5000/api/javascript?leccion=${leccion}`).catch(() => null),
-        fetch(`http://localhost:5000/api/java?leccion=${leccion}`).catch(() => null),
-        fetch(`http://localhost:5000/api/rust?leccion=${leccion}`).catch(() => null)
+        fetch(`/api/python?leccion=${leccion}`).catch(() => null),
+        fetch(`/api/javascript?leccion=${leccion}`).catch(() => null),
+        fetch(`/api/java?leccion=${leccion}`).catch(() => null),
+        fetch(`/api/rust?leccion=${leccion}`).catch(() => null)
       ])
 
       const py = resPy ? await resPy.json() : { codigo: '// Error cargando' }
@@ -96,7 +96,7 @@ function App() {
   const evaluarDesafíoEspecifico = async (lang) => {
     setCargando(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/${lang}/evaluar`, {
+      const res = await fetch(`/api/${lang}/evaluar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ leccion: temaActual, codigo: codigosDesafio[lang] })
